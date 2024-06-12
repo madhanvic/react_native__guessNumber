@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
-  Platform,
-  Alert,
-} from "react-native";
+import { StyleSheet, View, StatusBar, Platform, Alert } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
 import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
 function generateRandomBetween(min, max, exclude) {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -61,20 +58,26 @@ const GameScreen = ({ userNumber, onGameOver }) => {
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
-        <Text>Hgher or lower?</Text>
-        <View>
-          <PrimaryButton onPress={nextGuessHandler.bind(null, "lower")}>
-            -
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuessHandler.bind(null, "greater")}>
-            +
-          </PrimaryButton>
+      <Card>
+        <InstructionText style={styles.InstructionText}>
+          Hgher or lower?
+        </InstructionText>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(null, "lower")}>
+              <Ionicons name="remove" size={24} color="white" />
+            </PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(null, "greater")}>
+              <Ionicons name="add" size={24} color="white" />
+            </PrimaryButton>
+          </View>
         </View>
-      </View>
-      <View>
+      </Card>
+      {/* <View>
         <Text>LOG ROUNDS</Text>
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -86,5 +89,14 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 12,
     paddingTop: Platform.OS === "ios" ? 12 : StatusBar.currentHeight + 12,
+  },
+  InstructionText: {
+    marginBottom: 12,
+  },
+  buttonsContainer: {
+    flexDirection: "row",
+  },
+  buttonContainer: {
+    flex: 1,
   },
 });
