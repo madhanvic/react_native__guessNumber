@@ -76,7 +76,7 @@ export default StartGameScreen;
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    marginTop: Platform.OS === "ios" ? "auto" : StatusBar.currentHeight,
+    marginTop: Platform.OS === "ios" ? "auto" : StatusBar.currentHeight + 20,
     alignItems: "center",
   },
 
