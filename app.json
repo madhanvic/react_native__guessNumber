@@ -3,7 +3,7 @@
     "name": "guess-number",
     "slug": "guess-number",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "defaultr",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -24,9 +24,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-font"
-    ],
+    "plugins": ["expo-font"],
     "extra": {
       "eas": {
         "projectId": "000e1f0f-aecd-4580-8f5a-2bb71348b764"
